@@ -31,17 +31,6 @@ typedef long double ldbl;
         } \
     } while (0)
 
-#define cudaErrorCheck(error) \
-    do { \
-        cudaError_t res = error; \
-        if (res != cudaSuccess) \
-        { \
-            fprintf(stderr, "cuda %s:%d error: %s\n", __FILE__, __LINE__, \
-                cudaGetErrorString(res)); \
-            exit(EXIT_FAILURE); \
-        } \
-    } while(0)
-
 void minus(dbl * const restrict first,
     const dbl * const restrict second,
     const size_t n)
