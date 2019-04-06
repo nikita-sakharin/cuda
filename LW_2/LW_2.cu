@@ -1,6 +1,6 @@
-#include <assert.h>
 #include <errno.h>
 #include <float.h>
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -106,6 +106,7 @@ __global__ void kernel(const uint tex_w, const uint tex_h,
                 f22.w * (x - x1) * (y - y1);
             f.w /= divides;
             dest[j * dest_w + i] = make_uchar4(f.x, f.y, f.z, f.w);
+            fma(1.0, 2.0, 3.0);
         }
     }
 }
