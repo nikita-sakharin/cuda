@@ -1,0 +1,5 @@
+in.data
+result.data
+2
+2 2
+1 1

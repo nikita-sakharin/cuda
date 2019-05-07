@@ -106,7 +106,6 @@ __global__ void kernel(const uint tex_w, const uint tex_h,
                 f22.w * (x - x1) * (y - y1);
             f.w /= divides;
             dest[j * dest_w + i] = make_uchar4(f.x, f.y, f.z, f.w);
-            fma(1.0, 2.0, 3.0);
         }
     }
 }
@@ -146,7 +145,7 @@ int main(void)
 
     uchar4 *dev_img;
     cudaErrorCheck(cudaMalloc(&dev_img, sizeof(uchar4) * new_w * new_h));
-    kernel<<<dim3(32, 32), dim3(32, 32)>>>(w, h, dev_img, new_w, new_h);
+    kernel<<<dim3(32U, 32U), dim3(32U, 32U)>>>(w, h, dev_img, new_w, new_h);
     cudaErrorCheck(cudaGetLastError());
     cudaErrorCheck(cudaMemcpy(img, dev_img, sizeof(uchar4) * new_w * new_h,
         cudaMemcpyDeviceToHost));

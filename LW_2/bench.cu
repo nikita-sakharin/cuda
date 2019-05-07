@@ -142,7 +142,7 @@ int main(void)
     cudaErrorCheck(cudaEventCreate(&stop));
     cudaErrorCheck(cudaEventRecord(start, 0));
 
-    kernel<<<dim3(1, 1), dim3(8, 8)>>>(w, h, dev_img, new_w, new_h);
+    kernel<<<dim3(32U, 32U), dim3(32U, 32U)>>>(w, h, dev_img, new_w, new_h);
     cudaErrorCheck(cudaGetLastError());
 
     cudaErrorCheck(cudaEventRecord(stop, 0));
